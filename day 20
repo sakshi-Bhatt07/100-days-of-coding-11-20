@@ -1,0 +1,66 @@
+//Q39: Write a program to find the product of odd digits of a number.
+
+#include <stdio.h>
+
+int main() {
+    int num, digit;
+    long long product_of_odd_digits = 1; 
+
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    if (num == 0) {
+        printf("Product of odd digits: 0\n"); 
+        return 0;
+    }
+
+    while (num > 0) {
+        digit = num % 10; 
+        if (digit % 2 != 0) {
+            product_of_odd_digits *= digit; 
+        }
+
+        num /= 10; 
+    }
+
+    printf("Product of odd digits: %lld\n", product_of_odd_digits);
+
+    return 0;
+}
+
+//Q40: Write a program to find the 1’s complement of a binary number and print it.
+
+#include <stdio.h>
+
+int main() {
+    long long binaryNum;
+    long long complementNum = 0;
+    long long tempNum;
+    long long powerOfTen = 1;
+
+    printf("Enter a binary number (e.g., 10110): ");
+    scanf("%lld", &binaryNum);
+
+    tempNum = binaryNum;
+
+    while (tempNum > 0) {
+        int digit = tempNum % 10; 
+
+        if (digit == 0) {
+            complementNum += 1 * powerOfTen; 
+        } else if (digit == 1) {
+            complementNum += 0 * powerOfTen; 
+        } else {
+            printf("Invalid binary input. Please enter only 0s and 1s.\n");
+            return 1; 
+        }
+
+        tempNum /= 10; 
+        powerOfTen *= 10;
+    }
+
+    printf("Original binary number: %lld\n", binaryNum);
+    printf("1's complement: %lld\n", complementNum);
+
+    return 0;
+}
